@@ -15,8 +15,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        setupTabbar()
+        
         return true
+    }
+    
+    
+    func setupTabbar() {
+        
+        let vc1 = RecommendVC()
+        vc1.tabBarItem =  UITabBarItem(title:"推荐", image: UIImage(named: "recommend"), selectedImage: UIImage(named:"recommend_selected"))
+        let nav1 = UINavigationController(rootViewController: vc1)
+        
+        let vc2 = TelevisionVC()
+        vc2.tabBarItem =  UITabBarItem(title:"美剧", image: UIImage(named: "television"), selectedImage: UIImage(named:"television_selected"))
+        let nav2 = UINavigationController(rootViewController: vc2)
+        
+        let vc3 = MovieVC()
+        vc3.tabBarItem =  UITabBarItem(title:"电影", image: UIImage(named: "movie"), selectedImage: UIImage(named:"movie_selected"))
+        let nav3 = UINavigationController(rootViewController: vc3)
+        
+        let vc4 = SearchVC()
+        vc4.tabBarItem =  UITabBarItem(title:"搜索", image: UIImage(named: "search"), selectedImage: UIImage(named:"search_selected"))
+        let nav4 = UINavigationController(rootViewController: vc4)
+        
+        let tbcMain = UITabBarController()
+        tbcMain.viewControllers = [nav1,nav2,nav3,nav4]
+        window?.rootViewController = tbcMain
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
