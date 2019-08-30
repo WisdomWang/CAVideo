@@ -26,7 +26,7 @@ class MainCollectionHeaderView: BaseCollectionReusableView {
     
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont.systemFont(ofSize: 12)
+        titleLabel.font = UIFont.systemFont(ofSize: 14)
         titleLabel.textColor = UIColor(hex: "#333333")
         titleLabel.numberOfLines = 0
         return titleLabel
@@ -36,7 +36,7 @@ class MainCollectionHeaderView: BaseCollectionReusableView {
         let mn = UIButton(type: .system)
         mn.setTitle("更多", for: .normal)
         mn.setTitleColor(UIColor(hex: "#999999"), for: .normal)
-        mn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        mn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         mn.addTarget(self, action: #selector(moreActionClick), for: .touchUpInside)
         return mn
     }()

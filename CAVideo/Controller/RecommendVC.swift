@@ -12,6 +12,27 @@ class RecommendVC: UIViewController {
     
     private var mainList = [MainData]()
     
+    
+    private  lazy var searchBar: UITextField = {
+        let searchBar = UITextField()
+        searchBar.backgroundColor = UIColor.white
+        searchBar.textColor = UIColor.gray
+        searchBar.tintColor = UIColor.darkGray
+        searchBar.font = UIFont.systemFont(ofSize: 15)
+        searchBar.placeholder = "输入影剧名称"
+        searchBar.layer.cornerRadius = 15
+        searchBar.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 30))
+        let img = UIImageView(image: UIImage(named: "search"))
+        img.frame = CGRect(x: 10, y: 5, width: 20, height: 20)
+        searchBar.addSubview(img)
+        searchBar.leftViewMode = .always
+        searchBar.clearsOnBeginEditing = true
+        searchBar.clearButtonMode = .whileEditing
+        searchBar.returnKeyType = .search
+        searchBar.delegate = self
+        return searchBar
+    }()
+    
     private lazy var collectionView:UICollectionView = {
         let layout = UCollectionViewSectionBackgroundLayout()
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
@@ -25,16 +46,12 @@ class RecommendVC: UIViewController {
         collectionView.register(supplementaryViewType: MainCollectionHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
         return collectionView
     }()
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal:-200,vertical:0), for: .default)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.background
-        navigationItem.title = "推荐"
+        self.searchBar.frame = CGRect(x: 0, y: 0, width: xScreenWidth - 60, height: 30)
+        navigationItem.titleView = searchBar
+       // navigationItem.title = "推荐"
         setupLayout()
         setupLoadData()
     }
@@ -76,6 +93,10 @@ extension RecommendVC:UCollectionViewSectionBackgroundLayoutDelegateLayout,UICol
         let comicList = mainList[indexPath.section]
         head.titleLabel.text = comicList.name
         head.moreActionClosure {
+            let vc = MovieMoreVC()
+            vc.ztid = comicList.id
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         return head
     }
@@ -102,7 +123,28 @@ extension RecommendVC:UCollectionViewSectionBackgroundLayoutDelegateLayout,UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let comicList = mainList[indexPath.section]
+        let model = comicList.vod?[indexPath.row]
+        let vc = MovieDetailVC(movieId: model!.id)
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension RecommendVC:UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
+        let vc = SearchVC()
+        vc.hidesBottomBarWhenPushed = true
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = .moveIn
+        transition.subtype = .fromTop
+        navigationController?.view.layer.add(transition, forKey: kCATransition)
+        navigationController?.pushViewController(vc, animated: false)
+        
+         return false
     }
 }
 

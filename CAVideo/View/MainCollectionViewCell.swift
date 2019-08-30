@@ -52,7 +52,7 @@ class MainCollectionViewCell: BaseCollectionViewCell {
             }
             iconView.kf.setImage(
                 with: URL(string: model.pic),
-                placeholder: nil,
+                placeholder: UIImage(named: "placeholder"),
                 options: [.transition(.fade(1)), .loadDiskFileSynchronously],
                 progressBlock: { receivedSize, totalSize in
             },

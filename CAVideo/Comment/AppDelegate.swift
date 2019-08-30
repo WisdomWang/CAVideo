@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,35 +16,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // 键盘处理
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "完成"
+        IQKeyboardManager.shared.toolbarTintColor = UIColor(hex: "#333333")
 
         setupTabbar()
-        
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal:-200,vertical:0), for: .default)
+        UINavigationBar.appearance().tintColor = UIColor.white
         return true
     }
-    
     
     func setupTabbar() {
         
         let vc1 = RecommendVC()
         vc1.tabBarItem =  UITabBarItem(title:"推荐", image: UIImage(named: "recommend"), selectedImage: UIImage(named:"recommend_selected"))
-        let nav1 = UINavigationController(rootViewController: vc1)
+        let nav1 = createNav(vc: vc1)
         
         let vc2 = TelevisionVC()
         vc2.tabBarItem =  UITabBarItem(title:"美剧", image: UIImage(named: "television"), selectedImage: UIImage(named:"television_selected"))
-        let nav2 = UINavigationController(rootViewController: vc2)
+        let nav2 = createNav(vc: vc2)
         
         let vc3 = MovieVC()
         vc3.tabBarItem =  UITabBarItem(title:"电影", image: UIImage(named: "movie"), selectedImage: UIImage(named:"movie_selected"))
-        let nav3 = UINavigationController(rootViewController: vc3)
-        
-        let vc4 = SearchVC()
-        vc4.tabBarItem =  UITabBarItem(title:"搜索", image: UIImage(named: "search"), selectedImage: UIImage(named:"search_selected"))
-        let nav4 = UINavigationController(rootViewController: vc4)
+        let nav3 = createNav(vc: vc3)
         
         let tbcMain = UITabBarController()
-        tbcMain.viewControllers = [nav1,nav2,nav3,nav4]
+        tbcMain.viewControllers = [nav1,nav2,nav3]
+        tbcMain.tabBar.isTranslucent = false
         window?.rootViewController = tbcMain
-        
+    }
+    
+    func createNav (vc:UIViewController) ->UINavigationController {
+        let nav = UINavigationController(rootViewController: vc)
+        let dict:NSDictionary = [NSAttributedString.Key.foregroundColor: UIColor.white,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18)]
+        nav.navigationBar.titleTextAttributes = dict as? [NSAttributedString.Key : AnyObject]
+        nav.navigationBar.tintColor = UIColor.white
+        nav.navigationBar.barTintColor = UIColor.navColor
+        nav.navigationBar.isTranslucent = false
+        return nav
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

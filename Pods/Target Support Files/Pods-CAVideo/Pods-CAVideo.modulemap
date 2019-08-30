@@ -1,0 +1,6 @@
+framework module Pods_CAVideo {
+  umbrella header "Pods-CAVideo-umbrella.h"
+
+  export *
+  module * { export * }
+}
