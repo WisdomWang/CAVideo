@@ -68,8 +68,7 @@ class MovieMoreVC: UIViewController {
     private func setupLayout() {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
-            make.bottom.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(navH)
+            make.edges.equalToSuperview()
         }
     }
 }

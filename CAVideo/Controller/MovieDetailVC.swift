@@ -67,6 +67,7 @@ class MovieDetailVC: UIViewController {
 extension MovieDetailVC:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //return 4;
         return 3;
     }
     
@@ -93,7 +94,7 @@ extension MovieDetailVC:UITableViewDelegate,UITableViewDataSource {
             cell.selectionStyle = .none
             return cell
         }
-        else {
+        else if (indexPath.row) == 2 {
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: ChapterTableViewCell.self)
             let model:Zu? = detailModel?.zu[0]
             cell.themes = model?.ji
@@ -105,6 +106,32 @@ extension MovieDetailVC:UITableViewDelegate,UITableViewDataSource {
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             return cell
+        }
+        
+        else {
+            
+            let cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: xDetailOneCell)
+            cell.textLabel?.text = "json"
+            cell.detailTextLabel?.text = "\(detailModel?.zu ?? [])"
+            cell.textLabel?.textColor = UIColor(hex: "#333333")
+            cell.detailTextLabel?.numberOfLines = 0
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14)
+            cell.detailTextLabel?.textColor = UIColor(hex: "#999999")
+            cell.selectionStyle = .none
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 3 {
+            
+            UIPasteboard.general.string = "\(detailModel?.zu ?? [])"
+            let alert = UIAlertController(title: "复制成功～", message: "", preferredStyle: .alert)
+            let actionRead = UIAlertAction(title: "知道了", style: .default) { (UIAlertAction) in
+            }
+            alert.addAction(actionRead)
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

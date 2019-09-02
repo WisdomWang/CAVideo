@@ -30,9 +30,17 @@ class MoviePlayVC: UIViewController {
             make.left.right.equalTo(self.view)
             make.height.equalTo(self.view)
         }
+        
         // Back button event
         player.backBlock = { [unowned self] (isFullScreen) in
-            if isFullScreen == true { return }
+            if isFullScreen == true {
+                let deviceType = UIDevice.current.model
+                if deviceType == "iPad" {
+                    self.navigationController?.popViewController(animated: true)
+                    return
+                }
+                return
+            }
             let _ = self.navigationController?.popViewController(animated: true)
         }
         
@@ -72,5 +80,4 @@ extension MoviePlayVC:BMPlayerDelegate {
     func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
         
     }
-    
 }
