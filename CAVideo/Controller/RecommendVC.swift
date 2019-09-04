@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import EmptyDataSet_Swift
 
 class RecommendVC: UIViewController {
     
@@ -54,6 +56,7 @@ class RecommendVC: UIViewController {
        // navigationItem.title = "推荐"
         setupLayout()
         setupLoadData()
+        NetworkMonitoring()
     }
     
     private func setupLoadData() {
@@ -68,6 +71,30 @@ class RecommendVC: UIViewController {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints{ make in
             make.edges.equalToSuperview()
+        }
+    }
+    
+    func NetworkMonitoring() {
+        
+        let net = NetworkReachabilityManager()
+        net?.startListening()
+        net?.listener = { status in
+            switch status{
+            case .notReachable:
+                print("此时没有网络")
+                self.collectionView.emptyDataSetDelegate = self
+                self.collectionView.emptyDataSetSource = self
+                self.collectionView.reloadData()
+                
+            case .unknown:
+                print("未知")
+            case .reachable(.ethernetOrWiFi):
+                print("WiFi")
+                self.setupLoadData()
+            case .reachable(.wwan):
+                print("移动网络")
+                self.setupLoadData()
+            }
         }
     }
 }
@@ -145,6 +172,27 @@ extension RecommendVC:UITextFieldDelegate {
         navigationController?.pushViewController(vc, animated: false)
         
          return false
+    }
+}
+
+extension RecommendVC:EmptyDataSetDelegate,EmptyDataSetSource {
+    
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControl.State) -> NSAttributedString? {
+        
+        let text =  "网络不给力，请点击重试哦~"
+        let attStr = NSMutableAttributedString(string: text)
+        attStr.addAttribute(.font, value: UIFont.systemFont(ofSize: 15.0), range: NSRange(location: 0, length: text.count))
+        attStr.addAttribute(.foregroundColor, value: UIColor.lightGray, range: NSRange(location: 0, length: text.count))
+        attStr.addAttribute(.foregroundColor, value:UIColor.navColor, range: NSRange(location: 7, length: 4))
+        return attStr
+    }
+    
+//    func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
+//        return -150
+//    }
+    
+    func emptyDataSet(_ scrollView: UIScrollView, didTapButton button: UIButton) {
+        setupLoadData()
     }
 }
 
