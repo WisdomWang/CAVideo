@@ -53,10 +53,26 @@ class RecommendVC: UIViewController {
         view.backgroundColor = UIColor.background
         self.searchBar.frame = CGRect(x: 0, y: 0, width: xScreenWidth - 60, height: 30)
         navigationItem.titleView = searchBar
-       // navigationItem.title = "推荐"
+        let button = UIButton(type: .detailDisclosure)
+        button.addTarget(self, action: #selector(riskCache), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
         setupLayout()
         setupLoadData()
         NetworkMonitoring()
+    }
+    
+    @objc func riskCache() {
+        
+        let alert = UIAlertController(title: "您确定清除缓存\(getCacheSize())么", message: "", preferredStyle: .alert)
+        let actionCancel = UIAlertAction(title: "取消", style: .cancel) { (UIAlertAction) in
+        }
+        let actionRead = UIAlertAction(title: "确认", style: .default) { (UIAlertAction) in
+            
+            clearCache()
+        }
+        alert.addAction(actionCancel)
+        alert.addAction(actionRead)
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func setupLoadData() {
