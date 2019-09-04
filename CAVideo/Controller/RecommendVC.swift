@@ -187,10 +187,6 @@ extension RecommendVC:EmptyDataSetDelegate,EmptyDataSetSource {
         return attStr
     }
     
-//    func verticalOffset(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
-//        return -150
-//    }
-    
     func emptyDataSet(_ scrollView: UIScrollView, didTapButton button: UIButton) {
         setupLoadData()
     }

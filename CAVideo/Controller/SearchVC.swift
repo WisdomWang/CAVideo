@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EmptyDataSet_Swift
 
 class SearchVC: UIViewController {
     
@@ -76,6 +77,8 @@ class SearchVC: UIViewController {
         
         ApiProvider.request(.search(key: keyword, page: "1", size: "100"), model:Vod.self) { (returnData) in
             self.mainList = returnData ?? []
+            self.collectionView.emptyDataSetDelegate = self
+            self.collectionView.emptyDataSetSource = self
             self.collectionView.reloadData()
         }
     }
@@ -132,5 +135,17 @@ extension SearchVC:UCollectionViewSectionBackgroundLayoutDelegateLayout,UICollec
         let vc = MovieDetailVC(movieId: model.id)
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension SearchVC:EmptyDataSetDelegate,EmptyDataSetSource {
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        
+        let text =  "暂时没有你想要的资源哦~"
+        let attStr = NSMutableAttributedString(string: text)
+        attStr.addAttribute(.font, value: UIFont.systemFont(ofSize: 15.0), range: NSRange(location: 0, length: text.count))
+        attStr.addAttribute(.foregroundColor, value: UIColor.lightGray, range: NSRange(location: 0, length: text.count))
+        return attStr
     }
 }
