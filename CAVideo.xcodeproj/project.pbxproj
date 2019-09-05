@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A107AB42318C803009E84B1 /* CacheVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A107AB32318C803009E84B1 /* CacheVC.swift */; };
 		4A401FE823161E8300638057 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A401FE723161E8300638057 /* AppDelegate.swift */; };
 		4A401FED23161E8300638057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A401FEB23161E8300638057 /* Main.storyboard */; };
 		4A401FEF23161E8400638057 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A401FEE23161E8400638057 /* Assets.xcassets */; };
@@ -58,7 +57,6 @@
 /* Begin PBXFileReference section */
 		1DB9B23E79F2EB41E26A0AF6 /* Pods-CAVideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CAVideo.debug.xcconfig"; path = "Target Support Files/Pods-CAVideo/Pods-CAVideo.debug.xcconfig"; sourceTree = "<group>"; };
 		279809F2D0FCF8F96D779362 /* Pods_CAVideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CAVideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A107AB32318C803009E84B1 /* CacheVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheVC.swift; sourceTree = "<group>"; };
 		4A401FE423161E8300638057 /* CAVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CAVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A401FE723161E8300638057 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A401FEC23161E8300638057 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 				4A40203623167FB400638057 /* MovieMoreVC.swift */,
 				4A81954E231781F500033FF2 /* MovieDetailVC.swift */,
 				4A8195542317BB1200033FF2 /* MoviePlayVC.swift */,
-				4A107AB32318C803009E84B1 /* CacheVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -428,7 +425,6 @@
 				4A40202323165BCE00638057 /* BaseCollectionViewCell.swift in Sources */,
 				4A40202B23165BF600638057 /* SystemCommon.swift in Sources */,
 				4A81954D23177D3600033FF2 /* UIViewExtension.swift in Sources */,
-				4A107AB42318C803009E84B1 /* CacheVC.swift in Sources */,
 				4A819551231782FB00033FF2 /* BaseTableViewCell.swift in Sources */,
 				4A40202823165BD800638057 /* UCollectionViewAlignedLayout.swift in Sources */,
 				4A40202E23165C9800638057 /* MainCollectionViewCell.swift in Sources */,

@@ -20,7 +20,7 @@ class MovieMoreVC: UIViewController {
     private lazy var collectionView:UICollectionView = {
         let layout = UCollectionViewSectionBackgroundLayout()
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         collectionView.backgroundColor = UIColor.background
         collectionView.delegate = self
         collectionView.dataSource = self

@@ -15,7 +15,7 @@ class MovieVC: UIViewController {
     private lazy var collectionView:UICollectionView = {
         let layout = UCollectionViewSectionBackgroundLayout()
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         collectionView.backgroundColor = UIColor.background
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -82,9 +82,9 @@ extension MovieVC:UCollectionViewSectionBackgroundLayoutDelegateLayout,UICollect
         return comicList.vod?.count ?? 0 > 0 ? CGSize(width: xScreenWidth, height: 44) : CGSize.zero
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return mainList.count - 1 != section ? CGSize(width: xScreenWidth, height: 10) : CGSize.zero
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+//        return mainList.count - 1 != section ? CGSize(width: xScreenWidth, height: 10) : CGSize.zero
+//    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: MainCollectionViewCell.self)
