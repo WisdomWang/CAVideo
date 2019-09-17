@@ -61,6 +61,7 @@ class MoviePlayVC: UIViewController {
 }
 
 extension MoviePlayVC:BMPlayerDelegate {
+    
     func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
         
     }

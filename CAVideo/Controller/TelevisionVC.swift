@@ -36,7 +36,7 @@ class TelevisionVC: UIViewController {
     }
     
     private func setupLoadData() {
-        ApiProvider.request(.movie(id: "2", vsize: "9"), model: MainData.self) { (returnData) in
+        ApiLoadingProvider.request(.movie(id: "2", vsize: "6"), model: MainData.self) { (returnData) in
             self.mainList = returnData ?? []
             self.collectionView.reloadData()
         }

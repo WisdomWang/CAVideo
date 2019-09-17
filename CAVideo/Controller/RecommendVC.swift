@@ -14,14 +14,13 @@ class RecommendVC: UIViewController {
     
     private var mainList = [MainData]()
     
-    
     private  lazy var searchBar: UITextField = {
         let searchBar = UITextField()
         searchBar.backgroundColor = UIColor.white
         searchBar.textColor = UIColor.gray
         searchBar.tintColor = UIColor.darkGray
         searchBar.font = UIFont.systemFont(ofSize: 15)
-        searchBar.placeholder = "输入影剧名称"
+        searchBar.placeholder = "请输入搜索关键字"
         searchBar.layer.cornerRadius = 15
         searchBar.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 30))
         let img = UIImageView(image: UIImage(named: "search"))
@@ -77,8 +76,10 @@ class RecommendVC: UIViewController {
     
     private func setupLoadData() {
       
-        ApiProvider.request(.index(vsize: "6"), model: MainData.self) { (returnData) in
+        ApiLoadingProvider.request(.index(vsize: "6"), model: MainData.self) { (returnData) in
             self.mainList = returnData ?? []
+            self.collectionView.emptyDataSetDelegate = self
+            self.collectionView.emptyDataSetSource = self
             self.collectionView.reloadData()
         }
     }
@@ -148,10 +149,6 @@ extension RecommendVC:UCollectionViewSectionBackgroundLayoutDelegateLayout,UICol
         let comicList = mainList[section]
         return comicList.vod?.count ?? 0 > 0 ? CGSize(width: xScreenWidth, height: 44) : CGSize.zero
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-//        return mainList.count - 1 != section ? CGSize(width: xScreenWidth, height: 10) : CGSize.zero
-//    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: MainCollectionViewCell.self)

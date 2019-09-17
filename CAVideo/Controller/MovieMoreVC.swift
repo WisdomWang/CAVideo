@@ -52,7 +52,7 @@ class MovieMoreVC: UIViewController {
             api = .more(page: "\(page)", size: "21", ztid: ztid!)
         }
         
-        ApiProvider.request(api!, model: Vod.self) { (returnData) in
+        ApiLoadingProvider.request(api!, model: Vod.self) { (returnData) in
             self.collectionView.es.stopPullToRefresh()
             if returnData?.count == 0 {
                 self.collectionView.es.noticeNoMoreData()

@@ -33,7 +33,7 @@ class SearchVC: UIViewController {
         searchBar.textColor = UIColor.gray
         searchBar.tintColor = UIColor.darkGray
         searchBar.font = UIFont.systemFont(ofSize: 15)
-        searchBar.placeholder = "输入影剧名称"
+        searchBar.placeholder = "请输入搜索关键字"
         searchBar.layer.cornerRadius = 15
         searchBar.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 30))
         let img = UIImageView(image: UIImage(named: "search"))
@@ -75,7 +75,7 @@ class SearchVC: UIViewController {
     
     private func setupLoadData(keyword:String) {
         
-        ApiProvider.request(.search(key: keyword, page: "1", size: "100"), model:Vod.self) { (returnData) in
+        ApiLoadingProvider.request(.search(key: keyword, page: "1", size: "1000"), model:Vod.self) { (returnData) in
             self.mainList = returnData ?? []
             self.collectionView.emptyDataSetDelegate = self
             self.collectionView.emptyDataSetSource = self
