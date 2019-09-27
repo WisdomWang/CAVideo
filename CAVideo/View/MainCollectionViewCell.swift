@@ -19,6 +19,14 @@ class MainCollectionViewCell: BaseCollectionViewCell {
         return iconView
     }()
     
+    private lazy var pfLabel:UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.textColor = UIColor.orange
+        titleLabel.font = UIFont.systemFont(ofSize: 12)
+        titleLabel.textAlignment = .right
+        return titleLabel
+    }()
+    
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.textColor = UIColor.black
@@ -43,6 +51,12 @@ class MainCollectionViewCell: BaseCollectionViewCell {
             make.top.left.right.equalToSuperview()
             make.bottom.equalTo(titleLabel.snp.top)
         }
+        
+        iconView.addSubview(pfLabel)
+        pfLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(2);
+            make.right.equalToSuperview().offset(-2);
+        }
     }
     
     var model:Vod? {
@@ -60,6 +74,7 @@ class MainCollectionViewCell: BaseCollectionViewCell {
                      //print(result)
             })
             titleLabel.text = model.name
+            //pfLabel.text = model.pf+"分"
         }
     }
 }
