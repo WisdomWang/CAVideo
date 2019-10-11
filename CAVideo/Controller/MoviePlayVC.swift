@@ -23,7 +23,6 @@ class MoviePlayVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         let player = BMPlayer()
-        player.delegate = self
         view.addSubview(player)
         player.snp.makeConstraints { (make) in
             make.top.equalTo(self.view)
@@ -60,25 +59,3 @@ class MoviePlayVC: UIViewController {
     }
 }
 
-extension MoviePlayVC:BMPlayerDelegate {
-    
-    func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
-        
-    }
-    
-    func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {
-        
-    }
-    
-    func bmPlayer(player: BMPlayer, playTimeDidChange currentTime: TimeInterval, totalTime: TimeInterval) {
-        
-    }
-    
-    func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool) {
-        
-    }
-    
-    func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
-        
-    }
-}

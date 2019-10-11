@@ -84,10 +84,6 @@ extension TelevisionVC:UCollectionViewSectionBackgroundLayoutDelegateLayout,UICo
         return comicList.vod?.count ?? 0 > 0 ? CGSize(width: xScreenWidth, height: 44) : CGSize.zero
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-//        return mainList.count - 1 != section ? CGSize(width: xScreenWidth, height: 10) : CGSize.zero
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: MainCollectionViewCell.self)
         let comicList = mainList[indexPath.section]
