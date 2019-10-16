@@ -27,6 +27,7 @@ class MovieDetailVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableHeaderView = self.headView
+        tableView.tableFooterView = UIView()
         tableView.showsVerticalScrollIndicator = false
         tableView.register(cellType: ChapterTableViewCell.self)
         return tableView

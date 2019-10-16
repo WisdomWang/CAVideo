@@ -62,9 +62,9 @@ class ChapterTableViewCell: BaseTableViewCell {
         
         contentView.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.top .equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(20)
             make.left.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview()
             make.height.equalTo(250)
         }
     }
