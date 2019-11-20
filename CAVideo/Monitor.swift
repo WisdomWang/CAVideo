@@ -10,9 +10,9 @@ init(n:Int,e:Double) {
 }
 	
 func checkException(v:Int) ->Bool {
-  if n*v >=e {
-     return false;
+  if n*v <=e {
+     return true;
    }
-  return true;
+  return false;
 }	
 }
