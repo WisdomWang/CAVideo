@@ -5,8 +5,8 @@ var e：Double
 
 init(n:Int,e:Double) {
 
-	self.n = n
-	self.e = e
+    self.n = n
+    self.e = e
 }
 	
 func checkException(v:Int) ->Bool {
