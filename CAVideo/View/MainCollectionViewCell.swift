@@ -16,6 +16,8 @@ class MainCollectionViewCell: BaseCollectionViewCell {
         let iconView = UIImageView()
         iconView.contentMode = .scaleAspectFill
         iconView.clipsToBounds = true
+        iconView.layer.cornerRadius = 2
+        iconView.layer.masksToBounds = true
         return iconView
     }()
     

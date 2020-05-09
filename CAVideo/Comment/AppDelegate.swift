@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // 键盘处理
-        setupKeyboadr()
+        setupKeyboard()
         //创建tabbar
         setupTabbar()
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal:-200,vertical:0), for: .default)

@@ -57,7 +57,7 @@
 /* Begin PBXFileReference section */
 		1DB9B23E79F2EB41E26A0AF6 /* Pods-CAVideo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CAVideo.debug.xcconfig"; path = "Target Support Files/Pods-CAVideo/Pods-CAVideo.debug.xcconfig"; sourceTree = "<group>"; };
 		279809F2D0FCF8F96D779362 /* Pods_CAVideo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CAVideo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4A401FE423161E8300638057 /* CAVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CAVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A401FE423161E8300638057 /* 电影美剧.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "电影美剧.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A401FE723161E8300638057 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A401FEC23161E8300638057 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4A401FEE23161E8400638057 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 		4A401FE523161E8300638057 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4A401FE423161E8300638057 /* CAVideo.app */,
+				4A401FE423161E8300638057 /* 电影美剧.app */,
 				4A401FF823161E8400638057 /* CAVideoTests.xctest */,
 				4A40200323161E8400638057 /* CAVideoUITests.xctest */,
 			);
@@ -184,9 +184,9 @@
 				4A819550231782FB00033FF2 /* BaseTableViewCell.swift */,
 				4A40202523165BD800638057 /* UCollectionViewSectionBackgroundLayout.swift */,
 				4A40202623165BD800638057 /* UCollectionViewAlignedLayout.swift */,
-				4A40202A23165BF500638057 /* UEmptyDataSet.swift */,
 				4A81954C23177D3600033FF2 /* UIViewExtension.swift */,
 				4A40202923165BF500638057 /* SystemCommon.swift */,
+				4A40202A23165BF500638057 /* UEmptyDataSet.swift */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -260,7 +260,7 @@
 			);
 			name = CAVideo;
 			productName = CAVideo;
-			productReference = 4A401FE423161E8300638057 /* CAVideo.app */;
+			productReference = 4A401FE423161E8300638057 /* 电影美剧.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4A401FF723161E8400638057 /* CAVideoTests */ = {
@@ -622,7 +622,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZexueEducation.CAVideo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "电影美剧";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -642,7 +642,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZexueEducation.CAVideo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "电影美剧";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

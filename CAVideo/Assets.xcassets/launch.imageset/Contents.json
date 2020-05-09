@@ -5,8 +5,8 @@
       "scale" : "1x"
     },
     {
+      "filename" : "18a7d846cb3df297f8b1ef23911a75e3.jpg",
       "idiom" : "universal",
-      "filename" : "launch.jpg",
       "scale" : "2x"
     },
     {
@@ -15,7 +15,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
